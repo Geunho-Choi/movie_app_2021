@@ -1,48 +1,24 @@
 import React from "react";
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    console.log("hello");
-  }
   state = {
-    count: 0,
+    isLoading: true,
+    movie: [],
   };
-  add = () => {
-    // console.log("add");
-    this.setState((current) => ({
-      count: current.count + 1,
-    }));
-  };
-  minus = () => {
-    // console.log("minus");
-    this.setState((current) => ({
-      count: current.count - 1,
-    }));
-  };
-  // componentDidMount: component가 처음 render될 때 호출됨
   componentDidMount() {
-    console.log("component rendered");
+    // timeout은 react것이 아니라 JS꺼임.
+    // 6초 후에 발생.
+    setTimeout(() => {
+      this.setState({ isLoading: false });
+    }, 6000);
   }
-  // componentDidUpdate: component가 업데이트될 때 호출됨
-  componentDidUpdate() {
-    console.log("I just updated");
-  }
-  componentWillUnmount() {
-    console.log("Goodbye, cruel world");
-  }
-
   // 3.2 React Component에서 사용하는 유일한 함수는 render함수.
   render() {
-    console.log("I am rendering");
-    return (
-      <div>
-        <h1>The number is {this.state.count}</h1>
-        <button onClick={this.add}>Add</button>
-        <button onClick={this.minus}>Minus</button>
-      </div>
-    );
+    // 3.3 ES6 문법
+    const { isLoading } = this.state;
+    return <div>{isLoading ? "Loading..." : "We are ready"}</div>;
   }
 }
+// 처음에 우리가 render를 하면 호출되는 life cycle method는 뭘까?-->componentDidMount
 
 export default App;
