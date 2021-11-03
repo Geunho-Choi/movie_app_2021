@@ -57,4 +57,4 @@ class Home extends React.Component {
 }
 // 처음에 우리가 render를 하면 호출되는 life cycle method는 뭘까?-->componentDidMount
 
-export default App;
+export default Home;
